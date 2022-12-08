@@ -1,12 +1,16 @@
 package app.prog.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import java.time.LocalDate;
 
 @Entity
@@ -20,6 +24,8 @@ public class Book {
     TODO-4-b: Should I map it with int ? Fix it if there is a problem
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "Book_id")
     private int id;
     private String title;
     private String author;
