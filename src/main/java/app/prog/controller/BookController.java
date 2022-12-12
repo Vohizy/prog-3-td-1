@@ -1,12 +1,15 @@
 package app.prog.controller;
 import app.prog.controller.Bookcreat.BookCreat;
+import app.prog.controller.mapper.BookRestMapper;
 import app.prog.service.BookService;
+import app.prog.controller.response.BookResponse;
 
-import app.prog.model.Book;
+
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -18,18 +21,17 @@ public class BookController {
     public List<BookResponse> getBooks() {
         return service.getBooks().stream()
                 .map(mapper::toRest)
-                .toList();
+                .collect(Collectors.toList());
     }
 
-
     @PostMapping("/books")
-    public List<BookResponse> createBooks(@RequestBody List<BookCreat> toCreate) {
+    public List<BookResponse> createBookse(@RequestBody List<BookCreat> toCreate) {
         return service.createBooks(toCreate
                         .stream()
                         .map(mapper::toCreat)
-                        .toList()).stream()
+                        .collect(Collectors.toList())).stream()
                 .map(mapper::toRest)
-                .toList();
+                .collect(Collectors.toList());
     }
 
 
@@ -37,9 +39,9 @@ public class BookController {
     public List<BookResponse> updateBooks(@RequestBody List<BookResponse> toUpdate) {
         return service.updateBooks(toUpdate.stream()
                         .map(mapper::toUpdate)
-                        .toList()).stream()
+                        .collect(Collectors.toList())).stream()
                 .map(mapper::toRest)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @DeleteMapping("/books/{bookId}")

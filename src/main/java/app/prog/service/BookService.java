@@ -3,7 +3,9 @@ package app.prog.service;
 import app.prog.model.Book;
 import app.prog.repository.BookRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +37,8 @@ public class BookService {
             return optional.get();
         } else {
 
-            throw new RuntimeException("Book." + bookId + " not found");
+           // throw new RuntimeException("Book." + bookId + " not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
 }

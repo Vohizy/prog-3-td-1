@@ -2,6 +2,7 @@ package app.prog.controller.mapper;
 
 import app.prog.controller.Bookcreat.BookCreat;
 import app.prog.model.Book;
+import app.prog.controller.response.BookResponse;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -28,7 +29,6 @@ public class BookRestMapper {
                 .id(update.getId())
                 .title(update.getTitle())
                 .author(update.getAuthor())
-                .hasAuthor(update.hasAuthor())
                 .build();
     }
 }
