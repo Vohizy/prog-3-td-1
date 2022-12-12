@@ -24,17 +24,16 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-<<<<<<< HEAD:src/main/java/app/prog/model/Book.java
+
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
-=======
+
 public class BookEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
->>>>>>> dev:src/main/java/app/prog/model/BookEntity.java
     private int id;
     private String title;
     private String author;
