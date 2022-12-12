@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
@@ -29,6 +30,7 @@ public class BookEntity {
     private String author;
     private Integer pageNumber;
     private LocalDate releaseDate;
+
 
     public boolean hasAuthor() {
         return author != null;
