@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -23,6 +24,7 @@ public class AuthorEntity {
     private int id;
     private String name;
     private	String particularity;
+    private LocalDate birthDate;
     public boolean hasParticularity() {
         return particularity != null;
     }
