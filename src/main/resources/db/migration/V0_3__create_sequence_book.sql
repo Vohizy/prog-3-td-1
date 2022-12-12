@@ -1,2 +1,1 @@
-CREATE SEQUENCE defaut
-    START WITH 30;
+ALTER SEQUENCE book_id_seq restart WITH 30;
