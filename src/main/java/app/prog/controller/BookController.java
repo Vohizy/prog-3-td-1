@@ -1,6 +1,10 @@
 package app.prog.controller;
 import app.prog.controller.Bookcreat.BookCreat;
 import app.prog.controller.mapper.BookRestMapper;
+import app.prog.controller.response.BookResponse;
+import app.prog.controller.response.CreateBookResponse;
+import app.prog.controller.response.UpdateBookResponse;
+import app.prog.model.BookEntity;
 import app.prog.service.BookService;
 import app.prog.controller.response.BookResponse;
 
@@ -29,17 +33,27 @@ public class BookController {
         return service.createBooks(toCreate
                         .stream()
                         .map(mapper::toCreat)
-                        .collect(Collectors.toList())).stream()
+                        .collect(Collectors.toList())).stream();
+    public List<BookResponse> createBooks(@RequestBody List<CreateBookResponse> toCreate) {
+        List<BookEntity> domain = toCreate.stream()
+                .map(mapper::toDomain)
+                .toList();
+        return service.createBooks(domain).stream()
                 .map(mapper::toRest)
                 .collect(Collectors.toList());
     }
-
 
     @PutMapping("/books")
     public List<BookResponse> updateBooks(@RequestBody List<BookResponse> toUpdate) {
         return service.updateBooks(toUpdate.stream()
                         .map(mapper::toUpdate)
                         .collect(Collectors.toList())).stream()
+    @PutMapping("/books")
+    public List<BookResponse> updateBooks(@RequestBody List<UpdateBookResponse> toUpdate) {
+        List<BookEntity> domain = toUpdate.stream()
+                .map(mapper::toDomain)
+                .toList();
+        return service.updateBooks(domain).stream()
                 .map(mapper::toRest)
                 .collect(Collectors.toList());
     }
