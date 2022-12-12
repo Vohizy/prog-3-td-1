@@ -29,11 +29,7 @@ public class BookController {
     }
 
     @PostMapping("/books")
-    public List<BookResponse> createBookse(@RequestBody List<BookCreat> toCreate) {
-        return service.createBooks(toCreate
-                        .stream()
-                        .map(mapper::toCreat)
-                        .collect(Collectors.toList())).stream();
+
     public List<BookResponse> createBooks(@RequestBody List<CreateBookResponse> toCreate) {
         List<BookEntity> domain = toCreate.stream()
                 .map(mapper::toDomain)
@@ -43,11 +39,7 @@ public class BookController {
                 .collect(Collectors.toList());
     }
 
-    @PutMapping("/books")
-    public List<BookResponse> updateBooks(@RequestBody List<BookResponse> toUpdate) {
-        return service.updateBooks(toUpdate.stream()
-                        .map(mapper::toUpdate)
-                        .collect(Collectors.toList())).stream()
+
     @PutMapping("/books")
     public List<BookResponse> updateBooks(@RequestBody List<UpdateBookResponse> toUpdate) {
         List<BookEntity> domain = toUpdate.stream()

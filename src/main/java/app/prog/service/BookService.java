@@ -19,21 +19,7 @@ public class BookService {
         return repository.findAll();
     }
 
-<<<<<<< HEAD
 
-    public List<Book> createBooks(List<Book> toCreate) {
-        return repository.saveAll(toCreate);
-    }
-
-
-    public List<Book> updateBooks(List<Book> toUpdate) {
-        return repository.saveAll(toUpdate);
-    }
-
-    public Book deleteBook(int bookId) {
-
-        Optional<Book> optional = repository.findById(String.valueOf(bookId));
-=======
     public List<BookEntity> createBooks(List<BookEntity> toCreate) {
         return repository.saveAll(toCreate);
     }
@@ -53,16 +39,13 @@ public class BookService {
         T is the type of the value, for example : here the class type is BookEntity
          */
         Optional<BookEntity> optional = repository.findById(String.valueOf(BookEntityId));
->>>>>>> dev
         if (optional.isPresent()) {
             repository.delete(optional.get());
             return optional.get();
         } else {
-<<<<<<< HEAD
 
            // throw new RuntimeException("Book." + bookId + " not found");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-=======
+           // throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         /*
         TODO-5 : The exception appears as an internal server error, status 500.
         We all know that the appropriate error status is the 404 Not Found.
@@ -72,7 +55,6 @@ public class BookService {
         Link 2 : https://www.baeldung.com/exception-handling-for-rest-with-spring
          */
             throw new RuntimeException("BookEntity." + BookEntityId + " not found");
->>>>>>> dev
         }
     }
 }

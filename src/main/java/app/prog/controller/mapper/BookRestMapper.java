@@ -1,8 +1,5 @@
 package app.prog.controller.mapper;
 
-import app.prog.controller.Bookcreat.BookCreat;
-import app.prog.model.Book;
-import app.prog.controller.response.BookResponse;
 import app.prog.controller.response.BookResponse;
 import app.prog.controller.response.CreateBookResponse;
 import app.prog.controller.response.UpdateBookResponse;
@@ -20,19 +17,7 @@ public class BookRestMapper {
                 .build();
     }
 
-    public Book toCreat(BookCreat creat){
-        return Book.builder()
-                .author(creat.getAuthor())
-                .title(creat.getTitle())
-                .pageNumber(0)
-                .build();
-    }
 
-    public Book toUpdate(BookResponse update){
-        return Book.builder()
-                .id(update.getId())
-                .title(update.getTitle())
-                .author(update.getAuthor())
     public BookEntity toDomain(CreateBookResponse rest) {
         return BookEntity.builder()
                 .author(rest.getAuthor())
