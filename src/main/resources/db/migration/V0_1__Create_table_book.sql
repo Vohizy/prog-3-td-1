@@ -5,5 +5,6 @@ create table book
     title  varchar,
     page_number int not null default 0,
     release_date date,
+    category_id int,
     primary key (id)
 );

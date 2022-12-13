@@ -28,6 +28,11 @@ public class BookController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/books/category")
+    public List<BookEntity> getBook(){
+        return service.getBooks();
+    }
+
     @PostMapping("/books")
 
     public List<BookResponse> createBooks(@RequestBody List<CreateBookResponse> toCreate) {

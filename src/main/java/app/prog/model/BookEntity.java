@@ -6,12 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
@@ -30,6 +33,10 @@ public class BookEntity {
     private String author;
     private Integer pageNumber;
     private LocalDate releaseDate;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cathegory_id",referencedColumnName = "id")
+    private Cathegory cathegory;
 
 
     public boolean hasAuthor() {
